@@ -1,0 +1,22 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a></li>
+
+          {% if request.user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'add_news' %}">Добавить новость</a></li>
+          {% endif %}
+      </ul>
+
+    </div>
+        <span class="navbar-text">
+            {% if request.user.is_authenticated %}
+            Добро пожаловать {{ user.username }} | <a href="{% url 'logout' %}">Выйти </a>|
+            <a href="{% url 'contact' %}">Обратная связь</a>
+            {% else %}
+            <a href="{% url 'register' %}">Зарегистрироваться</a> | <a href="{% url 'login' %}">Войти</a>
+            {% endif %}
+    </span>
+</nav>
+</div>
